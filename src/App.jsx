@@ -1,8 +1,8 @@
+import { useLoaderData } from "react-router-dom";
 import styles from "./App.module.scss";
-import { homeLoader } from "./util";
 
 function App() {
-	const { title } = homeLoader();
+	const { title } = useLoaderData();
 
 	return (
 		<>
