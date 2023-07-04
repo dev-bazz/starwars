@@ -1,16 +1,12 @@
 import styles from "./App.module.scss";
+import { homeLoader } from "./util";
 
-const api = import.meta.env.VITE_API_URL;
-
-export const loader = () => {
-	return { title: "Vite + React", api };
-};
 function App() {
-	console.log(api);
+	const { title } = homeLoader();
 
 	return (
 		<>
-			<h1 className={styles["read-the-docs"]}>Hello World</h1>
+			<h1 className={styles["read-the-docs"]}>Hello World {title}</h1>
 		</>
 	);
 }
