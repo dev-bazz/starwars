@@ -1,0 +1,5 @@
+@use "./functions.scss" as *;
+
+$containers: (
+	"laptop": px-to-rem(1200px),
+);

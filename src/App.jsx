@@ -1,12 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import styles from "./App.module.scss";
+import { Nav } from "./components";
 
 function App() {
-	const { title } = useLoaderData();
+	console.log(useLoaderData());
 
 	return (
 		<>
-			<h1 className={styles["read-the-docs"]}>Hello World {title}</h1>
+			<section className={styles.hero}>
+				<Nav />
+				<h1>The Force Awakens</h1>
+			</section>
 		</>
 	);
 }

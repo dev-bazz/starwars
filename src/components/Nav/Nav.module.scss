@@ -1,0 +1,25 @@
+@use "../../constants/index.scss" as *;
+
+.Nav {
+	max-width: calc(map-get($containers, "laptop") - px-to-rem(16px));
+	margin-inline: auto;
+	display: flex;
+	justify-content: space-between;
+	padding-top: px-to-rem(30px);
+	align-items: center;
+	padding-inline: px-to-rem(16px);
+}
+
+.Nav_logo {
+	max-width: px-to-rem(72px);
+}
+
+.Nav_links {
+	display: flex;
+	gap: px-to-rem(30px);
+
+	a {
+		text-decoration: none;
+		color: white;
+	}
+}

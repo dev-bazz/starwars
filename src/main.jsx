@@ -10,6 +10,7 @@ const routes = createBrowserRouter([
 		path: "/",
 		element: <App />,
 		loader: homeLoader,
+		errorElement: <div>Error | Error</div>,
 	},
 ]);
 
