@@ -3,14 +3,22 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { homeLoader } from "./util";
+import { useHomeLoader } from "./util";
+import { Result } from "./components";
 
 const routes = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
-		loader: homeLoader,
-		errorElement: <div>Error | Error</div>,
+
+		children: [
+			{
+				index: true,
+				element: <Result />,
+				errorElement: <div>Error | Error</div>,
+				loader: useHomeLoader,
+			},
+		],
 	},
 ]);
 

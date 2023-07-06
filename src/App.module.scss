@@ -27,12 +27,52 @@
 			animation-timing-function: ease-out;
 		}
 	}
-	&_hero {
+	&_text {
+		position: absolute;
+		color: white;
+		top: 36%;
+		font-family: "Cormorant Garamond", serif;
+		font-size: clamp(1.5rem, 1.205rem + 1.48vw, 2.313rem);
+		right: 0;
+		left: 0;
+		text-align: center;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		letter-spacing: px-to-rem(4px);
+		text-transform: uppercase;
+		scale: 1.1;
+		opacity: 0;
+		animation-name: introText;
+		animation-duration: 0.8s;
+		animation-delay: 1.2s;
+		animation-fill-mode: forwards;
+		animation-timing-function: ease-out;
+	}
+}
+
+.popularSearch {
+	margin-top: px-to-rem(45px);
+	h2 {
+		text-align: center;
+		color: #292626;
+		font-family: Nunito Sans;
+		font-size: 36px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
 	}
 }
 
 @keyframes intro {
 	to {
 		scale: 1;
+	}
+}
+
+@keyframes introText {
+	to {
+		opacity: 1;
+		letter-spacing: px-to-rem(15px);
 	}
 }
