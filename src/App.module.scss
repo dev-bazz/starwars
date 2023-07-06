@@ -1,7 +1,38 @@
+@use "./constants/index.scss" as *;
+
 .hero {
-	min-height: 70vh;
-	min-height: 70dvh;
+	min-height: px-to-rem(494px);
+
 	background-color: rgb(138, 138, 220);
 	background-image: url("./assets/hero-banner-starwars.webp");
 	background-size: cover;
+	overflow: hidden;
+
+	&_content {
+		max-width: calc(map-get($containers, "laptop") - px-to-rem(16px));
+		margin-inline: auto;
+		padding-inline: px-to-rem(16px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&_image {
+		margin-top: px-to-rem(54px);
+		position: relative;
+		&_intro {
+			scale: 18;
+			animation-name: intro;
+			animation-duration: 1.2s;
+			animation-fill-mode: forwards;
+			animation-timing-function: ease-out;
+		}
+	}
+	&_hero {
+	}
+}
+
+@keyframes intro {
+	to {
+		scale: 1;
+	}
 }
