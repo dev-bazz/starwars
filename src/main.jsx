@@ -4,27 +4,26 @@ import App from "./App.jsx";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { homeLoader } from "./util";
-import { Errors, Result } from "./components";
+import { Errors, Result, ResultPlay } from "./components";
 
-const routes = createBrowserRouter(
-	[
-		{
-			path: "/",
-			element: <App />,
+const routes = createBrowserRouter([
+	{
+		path: "/",
+		element: <App />,
 
-			children: [
-				{
-					index: true,
-					element: <Result />,
-					errorElement: <Errors />,
-					loader: ({ request }) => homeLoader(request),
-				},
-			],
-		},
-	],
-	{ basename: import.meta.env.DEV ? "/" : "/starwars/" }
-);
+		children: [
+			{
+				index: true,
+				element: <ResultPlay />,
+				errorElement: <Errors />,
+				loader: ({ request }) => homeLoader(request),
+			},
+		],
+	},
+]);
 
+// ,
+// { basename: import.meta.env.DEV ? "/" : "/starwars/" }
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<RouterProvider router={routes} />
