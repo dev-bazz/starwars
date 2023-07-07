@@ -3,9 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { homeLoader } from "./util";
-import { Errors, Result, ResultPlay } from "./components";
-
+import { Errors, Result } from "./components";
+import { QueryClientProvider, QueryClient } from "react-query";
 const routes = createBrowserRouter([
 	{
 		path: "/",
@@ -14,18 +13,22 @@ const routes = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <ResultPlay />,
+				element: <Result />,
 				errorElement: <Errors />,
-				loader: ({ request }) => homeLoader(request),
+				// loader: ({ request }) => homeLoader(request),
 			},
 		],
 	},
 ]);
 
+const queryClient = new QueryClient();
+
 // ,
 // { basename: import.meta.env.DEV ? "/" : "/starwars/" }
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
-		<RouterProvider router={routes} />
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={routes} />
+		</QueryClientProvider>
 	</React.StrictMode>
 );
