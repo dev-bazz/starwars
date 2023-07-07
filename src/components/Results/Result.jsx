@@ -19,12 +19,12 @@ export function Result() {
 
 	const filtered = state ? filterResults() : results;
 	const paginator = () => {
-		const nextPage = next.split("?")[1]?.split("=")[1];
+		const nextPage = next?.split("?")[1]?.split("=")[1];
 		setSearchParams({ page: nextPage });
 	};
 
 	const paginatorPrev = () => {
-		const nextPage = previous.split("?")[1]?.split("=")[1];
+		const nextPage = previous?.split("?")[1]?.split("=")[1];
 		setSearchParams({ page: nextPage });
 	};
 
