@@ -6,21 +6,24 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { homeLoader } from "./util";
 import { Errors, Result } from "./components";
 
-const routes = createBrowserRouter([
-	{
-		path: "/",
-		element: <App />,
+const routes = createBrowserRouter(
+	[
+		{
+			path: "/",
+			element: <App />,
 
-		children: [
-			{
-				index: true,
-				element: <Result />,
-				errorElement: <Errors />,
-				loader: ({ request }) => homeLoader(request),
-			},
-		],
-	},
-]);
+			children: [
+				{
+					index: true,
+					element: <Result />,
+					errorElement: <Errors />,
+					loader: ({ request }) => homeLoader(request),
+				},
+			],
+		},
+	],
+	{ basename: import.meta.env.DEV ? "/" : "/starwars/" }
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
