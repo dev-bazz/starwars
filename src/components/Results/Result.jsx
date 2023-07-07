@@ -4,20 +4,27 @@ import image from "./assets/starship-2.webp";
 import { useState } from "react";
 
 export function Result() {
-	console.log(useLoaderData());
 	const [state, setState] = useState();
-	const [searParams, setSearchParams] = useSearchParams();
-	const { results, next } = useLoaderData();
+	const [searchParam, setSearchParams] = useSearchParams();
+	const { results, next, count, previous } = useLoaderData();
 
-	console.log(searParams.get("page"));
+	const page = searchParam.get("page") || 1;
+	const totalPage = Math.ceil(count / 10);
+
 	function filterResults() {
 		return results.filter((result) =>
 			result.name.toLowerCase().includes(state.toLowerCase().trim())
 		);
 	}
+
 	const filtered = state ? filterResults() : results;
 	const paginator = () => {
-		const nextPage = next.split("?")[1].split("=")[1];
+		const nextPage = next.split("?")[1]?.split("=")[1];
+		setSearchParams({ page: nextPage });
+	};
+
+	const paginatorPrev = () => {
+		const nextPage = previous.split("?")[1]?.split("=")[1];
 		setSearchParams({ page: nextPage });
 	};
 
@@ -31,6 +38,8 @@ export function Result() {
 					display: "flex",
 					justifyContent: "space-between",
 					alignItems: "center",
+					gap: "20px",
+					flexWrap: "wrap",
 				}}>
 				<input
 					className={styles.search}
@@ -39,9 +48,15 @@ export function Result() {
 					placeholder="Search for a starship"
 				/>
 				<div className={styles.paginate}>
-					<p>Page 1 of 10</p>
+					<p>
+						Page {page} of {totalPage}
+					</p>
 					<div className={styles.paginate_btns}>
-						<button className={styles.search_btn}>Prev</button>
+						<button
+							className={styles.search_btn}
+							onClick={paginatorPrev}>
+							Prev
+						</button>
 						<button
 							className={styles.search_btn}
 							onClick={paginator}>

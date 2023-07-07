@@ -10,12 +10,20 @@
 	margin-inline: auto;
 	padding-inline: px-to-rem(16px);
 	min-height: px-to-rem(500px);
+	padding-bottom: px-to-rem(20px);
 }
 
 .results {
 	display: grid;
-	grid-template-columns: repeat(3, auto);
+	grid-template-columns: repeat(3, 1fr);
 	gap: px-to-rem(16px);
+	@include custom-media-query("mobile", 900px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@include custom-media-query("mobile", 600px) {
+		grid-template-columns: repeat(1, 1fr);
+		place-items: center;
+	}
 
 	&_title {
 		color: #151515;
@@ -70,7 +78,7 @@
 
 .paginate {
 	display: flex;
-	gap: px-to-rem(100px);
+	gap: 10vw;
 	align-items: center;
 
 	&_btns {
@@ -83,6 +91,13 @@
 			border: 1px solid #d0d5dd;
 			background: white;
 			padding: px-to-rem(8px) px-to-rem(14px);
+			cursor: pointer;
+			&:hover {
+				background: #e9e8e8;
+			}
+			&:active {
+				background: #dfdfdf;
+			}
 		}
 	}
 }

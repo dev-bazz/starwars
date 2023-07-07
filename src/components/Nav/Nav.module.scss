@@ -18,6 +18,15 @@
 .Nav_links {
 	display: flex;
 	gap: px-to-rem(30px);
+	@include custom-media-query("mobile", 400px) {
+		font-size: px-to-rem(14px);
+		gap: px-to-rem(10px);
+	}
+
+	@include custom-media-query("mobile", 320px) {
+		font-size: px-to-rem(12px);
+		gap: px-to-rem(8px);
+	}
 
 	a {
 		text-decoration: none;
